@@ -36,18 +36,23 @@
     }
   }
 
-  @media (max-width: 1400px) {
-    width: 40%;
-    flex: 0 0 40%;
+  @media (max-width: 1280px) {
+    width: 45%;
+    flex: 0 0 45%;
   }
 
   @media (max-width: 1000px) {
-    width: 60%;
-    flex: 0 0 60%;
+    width: 55%;
+    flex: 0 0 55%;
   }
 
-  @media (max-width: 650px) {
-    width: 90%;
-    flex: 0 0 90%;
+  @media (max-width: 768px) {
+    width: 65%;
+    flex: 0 0 65%;
+  }
+
+  @media (max-width: 480px) {
+    width: 80%;
+    flex: 0 0 80%;
   }
 }

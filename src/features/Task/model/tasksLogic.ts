@@ -1,4 +1,4 @@
-import {IChangeTaskValue, ITask} from "./types";
+import { ITask} from "./types";
 import {getProjectByTask} from "../../../entities/Project";
 import {useContext} from "react";
 import {ProjectsContext} from "../../../app/ui/App";
@@ -14,13 +14,11 @@ export const useChangeTaskValue = () => {
     if (!project) return projects;
 
     project.tasks[task.status].forEach((anotherTask) => {
-      if (anotherTask.id === task.id) {
-        console.log(value)
-        anotherTask[valueName] = value;
-      }
+      if (anotherTask.id === task.id) anotherTask[valueName] = value;
+
       return task;
     })
-    console.log(projects[0].tasks)
+
     setProjects([...projects])
   }
 
