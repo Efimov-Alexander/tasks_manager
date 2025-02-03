@@ -1,0 +1,18 @@
+.button {
+  font-size: 13px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  border: none;
+  background: #403b5e;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #4d4481;
+  }
+}

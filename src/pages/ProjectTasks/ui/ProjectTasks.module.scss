@@ -1,0 +1,18 @@
+.projectTasks {
+  max-width: 1900px;
+  margin: 0 auto;
+
+  &__columnsContainer {
+    display: flex;
+    gap: 10px;
+    margin: 0 auto;
+
+    @media (max-width: 1400px) {
+      overflow-x: scroll;
+
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+    }
+  }
+}

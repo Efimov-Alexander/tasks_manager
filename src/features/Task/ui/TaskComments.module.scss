@@ -1,0 +1,31 @@
+.taskComments {
+  font-size: 14px;
+  margin-top: 15px;
+  padding-left: 10px;
+  cursor: auto;
+
+  &__comment {
+    font-size: 13px;
+    background: #2c2f48;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 10px;
+    border-left: 2px solid #777;
+  }
+
+  &__commentReply {
+    margin-left: 30px;
+  }
+
+  &__replyButton {
+    margin-left: auto;
+    margin-top: 4px;
+    border-radius: 6px;
+    height: 18px;
+    font-size: 13px;
+  }
+
+  &__addCommentButton {
+    margin-top: 10px;
+  }
+}

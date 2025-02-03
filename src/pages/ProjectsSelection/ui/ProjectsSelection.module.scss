@@ -1,0 +1,15 @@
+.projectSelection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 32px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+  }
+}
