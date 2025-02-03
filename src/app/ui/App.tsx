@@ -33,8 +33,8 @@ function App() {
       <DndProvider backend={HTML5Backend}>
         <BrowserRouter>
           <Routes>
-            <Route path="" element={<ProjectsSelection />} />
-            <Route path="/projects/:projectId" element={<ProjectTasks />} />
+            <Route path="tasks_manager" element={<ProjectsSelection />} />
+            <Route path="tasks_manager/projects/:projectId" element={<ProjectTasks />} />
           </Routes>
         </BrowserRouter>
       </DndProvider>
