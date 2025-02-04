@@ -1,2 +1,1 @@
-
-# tasks_manager
+Deploy: https://efimov-alexander.github.io/tasks_manager/
