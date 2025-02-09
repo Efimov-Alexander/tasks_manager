@@ -1,0 +1,31 @@
+@import 'src/app/ui/colorsVariable';
+
+.prioritySelect {
+  font-size: 14px;
+  margin: 12px 0;
+  height: 26px;
+  display: inline-flex;
+  padding: 0 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: $white;
+  cursor: pointer;
+
+  &_urgent {
+    background-color: $turquoise;
+  }
+  &_hight {
+    background-color: $red;
+  }
+  &_medium {
+    background-color: $yellow;
+  }
+  &_low {
+    background-color: $green;
+  }
+
+  &_none {
+    background-color: $gray-500;
+  }
+}

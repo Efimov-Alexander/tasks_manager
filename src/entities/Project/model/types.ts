@@ -1,4 +1,4 @@
-import {ITask, TaskStatus} from "src/features/Task";
+import {ITask} from "src/entities/Task";
 
 export enum ProjectStatus {
   active = 'Active',
@@ -13,9 +13,5 @@ export interface IProject {
   description: string,
   imageSrc: string
   status: ProjectStatus,
-  tasks: {
-    [TaskStatus.queue]: ITask[],
-    [TaskStatus.development]: ITask[],
-    [TaskStatus.done]: ITask[],
-  }
+  tasks?: ITask[],
 }

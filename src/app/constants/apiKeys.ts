@@ -1,0 +1,1 @@
+export const TINY_MCE_API_KEY = '69iu8e1wb9d5dsf503izvplizfmifl49j2tb7mkfplrf7fbd'

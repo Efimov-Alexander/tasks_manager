@@ -1,3 +1,5 @@
+@import 'src/app/ui/colorsVariable';
+
 /* Reset and base styles  */
 * {
   padding: 0px;
@@ -91,13 +93,19 @@ legend {
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 html {
+  height: 100%;
   overflow: hidden;
 }
 
 body {
+  height: 100%;
   font-family: 'Poppins', sans-serif;
-  background-color: #181a1b;
-  color: #e0e0e0;
+  background-color: $gray-100;
+  color: $gray-900;
   position: relative;
   overflow: hidden;
+}
+
+#root {
+  height: 100%;
 }

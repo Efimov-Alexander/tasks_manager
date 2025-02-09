@@ -1,0 +1,70 @@
+@import 'src/app/ui/colorsVariable';
+
+.comment {
+  font-size: 12px;
+  background: $purple-100;
+  padding: 4px 6px;
+  margin-top: 2px;
+  border-radius: 10px;
+  border-left: 2px solid $gray-500;
+
+  &__commentHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__nameBlock {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+
+    span {
+      font-size: 11px;
+      color: $gray-700;
+    }
+  }
+
+  &__openButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: 1px solid $purple-800;
+    color: $purple-800;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+
+    &:hover {
+      border: 1px solid $purple-900;
+      color: $purple-900;
+    }
+  }
+
+  &__replyButton {
+    border-radius: 6px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  &__text {
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .comment {
+    font-size: 10px;
+
+    &__replyButton {
+      border-radius: 6px;
+      font-size: 12px;
+      padding: 4px 10px;
+    }
+  }
+}

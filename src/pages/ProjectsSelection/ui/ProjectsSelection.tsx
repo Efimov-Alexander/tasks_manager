@@ -1,11 +1,9 @@
 import React, {useContext} from 'react';
 
-import {getProjects} from "src/entities/Project";
-
 import ProjectCard from "./ProjectCard";
 
 import s from './ProjectsSelection.module.scss';
-import {ProjectsContext} from "../../../app/ui/App";
+import {ProjectsContext} from "../../../app/model/appHelper";
 
 const ProjectsSelection = () => {
   const { projects } = useContext(ProjectsContext);

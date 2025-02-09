@@ -1,3 +1,5 @@
+import {IComment} from "../../Comment/model/types";
+
 export enum TaskStatus {
   queue = 'Queue',
   development = 'Development',
@@ -8,7 +10,8 @@ export enum TaskPriority {
   urgent = 'Urgent',
   high = 'High',
   medium = 'Medium',
-  low = 'Low'
+  low = 'Low',
+  none = 'None'
 }
 
 export interface ITask {
@@ -18,21 +21,6 @@ export interface ITask {
   priority: TaskPriority,
   status: TaskStatus,
   createdAt: Date,
-  files: any[],
-}
-
-export interface IChangeTaskValue {
-  task: ITask,
-  value: ITask[keyof ITask],
-  valueName: keyof ITask,
-}
-
-export interface IDropTaskParams {
-  item: ITask,
-  title: TaskStatus,
-}
-
-export interface IDropFilesParams {
-  files: any[],
-  task: ITask,
+  files?: any[],
+  comments?: IComment[],
 }

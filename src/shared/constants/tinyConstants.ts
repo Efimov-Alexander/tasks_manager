@@ -1,0 +1,1 @@
+export const TINY_CONTENT_STYLE = 'body { margin: 0 6px; background: #1a1c2b; font-size:13px; color: #e4e4e4; } body::-webkit-scrollbar {width: 5px;} body::-webkit-scrollbar-thumb {background-color: #2c2f48; border-radius: 100px} body::-webkit-scrollbar-track {border-radius: 100px;background-color: #777777;}'

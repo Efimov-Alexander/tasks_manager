@@ -1,15 +1,22 @@
+@import 'src/app/ui/colorsVariable';
+@import 'src/app/ui/mixins';
+
 .tasksColumn {
   width: 33%;
   flex: 0 0 33%;
   display: flex;
   flex-direction: column;
 
-  .tasksColumn__title {
+  &__header {
     display: flex;
     align-items: center;
-    font-size: 24px;
+    justify-content: space-between;
     flex: 0 0 7vh;
-    padding-left: 10px;
+    padding: 0 10px;
+  }
+
+  &__title {
+    font-size: 22px;
   }
 
   &__tasksContainer {
@@ -19,40 +26,40 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 10px;
+    padding: 8px;
 
-    &::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: #777777;
-      border-radius: 100px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #222437;
-      border-radius: 100px;
-    }
+    @include scrollbar;
   }
 
   @media (max-width: 1280px) {
-    width: 45%;
-    flex: 0 0 45%;
+    width: 60%;
+    flex: 0 0 60%;
   }
 
   @media (max-width: 1000px) {
-    width: 55%;
-    flex: 0 0 55%;
+    width: 70%;
+    flex: 0 0 70%;
   }
 
   @media (max-width: 768px) {
-    width: 65%;
-    flex: 0 0 65%;
+    width: 80%;
+    flex: 0 0 80%;
+
+    .tasksColumn {
+      &__title {
+        font-size: 18px;
+      }
+
+      &__tasksContainer {
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+      }
+    }
   }
 
   @media (max-width: 480px) {
-    width: 80%;
-    flex: 0 0 80%;
+    width: 95%;
+    flex: 0 0 95%;
   }
 }

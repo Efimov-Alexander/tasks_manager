@@ -1,40 +1,30 @@
-import React, {useState, createContext, SetStateAction, Dispatch, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-
-import ProjectsSelection from "src/pages/ProjectsSelection";
-import ProjectTasks from "src/pages/ProjectTasks";
-
-import {initProjects} from "../constants/Data";
 
 import './App.scss';
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
-import {getProjects, IProject} from "../../entities/Project";
+import { IProject} from "../../entities/Project";
+import {
+  getStorageProjects, initData,
+  ProjectsContext,
+  setStorageProjects,
+} from "../model/appHelper";
+import {routesConfig} from "../model/routesConfig";
 
-export interface IProjectsContext {
-  projects: IProject[],
-  setProjects: Dispatch<SetStateAction<IProject[]>>,
-}
-
-export const ProjectsContext = createContext<IProjectsContext>({
-  projects: initProjects,
-  setProjects: () => {},
-});
-
-if (!getProjects().length) localStorage.setItem(`projects`, JSON.stringify(initProjects));
+initData();
 
 function App() {
-  const [projects, setProjects] = useState<IProject[]>(getProjects());
+  const [projects, setProjects] = useState<IProject[]>(getStorageProjects());
 
-  useEffect(() => {localStorage.setItem('projects', JSON.stringify(projects))}, [projects])
+  useEffect(() => {setStorageProjects(projects)}, [projects])
 
   return (
     <ProjectsContext.Provider value={{ setProjects, projects }}>
       <DndProvider backend={HTML5Backend}>
         <BrowserRouter>
           <Routes>
-            <Route path="tasks_manager" element={<ProjectsSelection />} />
-            <Route path="tasks_manager/projects/:projectId" element={<ProjectTasks />} />
+            {routesConfig.map((route) => <Route key={route.path} path={route.path} element={route.component} />)}
           </Routes>
         </BrowserRouter>
       </DndProvider>

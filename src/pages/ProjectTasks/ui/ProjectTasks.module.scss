@@ -4,10 +4,21 @@
 
   &__columnsContainer {
     display: flex;
-    gap: 10px;
     margin: 0 auto;
+  }
 
-    @media (max-width: 1280px) {
+  &__backButton {
+    font-size: 24px;
+    padding: 8px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .projectTasks {
+    &__columnsContainer {
       overflow-x: scroll;
 
       &::-webkit-scrollbar {

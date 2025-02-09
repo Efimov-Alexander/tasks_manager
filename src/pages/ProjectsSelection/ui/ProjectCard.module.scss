@@ -1,11 +1,12 @@
+@import 'src/app/ui/colorsVariable';
+
 .projectCard {
   height: fit-content;
   max-width: 400px;
-  flex: 0 0 45%;
-  background: linear-gradient(135deg, #2a2d3e, #1a1c2b);
+  background: $dark-background;
   border-radius: 15px;
   box-shadow: 0 3px 10px rgba(138, 43, 226, 0.5);
-  border-left: 1px solid #8a2be2;
+  border-left: 1px solid $purple-700;
   transition: 0.3s ease;
 
   &_closed {
@@ -15,7 +16,7 @@
 
   &:hover {
     box-shadow: 0 3px 10px rgba(191, 137, 241, 0.5);
-    border-left: 1px solid #b47fe6;
+    border-left: 1px solid $purple-800;
   }
 
   &__link {
@@ -42,14 +43,14 @@
   &__title {
     text-align: left;
     font-size: 20px;
-    color: #ffffff;
+    color: $white;
     font-weight: bold;
     margin-bottom: 10px;
   }
 
   &__description {
     text-align: left;
-    color: #ffffff;
+    color: $white;
     font-size: 13px;
   }
 
@@ -62,15 +63,15 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    color: #e4e4e4;
+    color: $gray-900;
     cursor: pointer;
 
     &_closed {
-      background-color: #434a60;
+      background-color: $purple-100;
     }
 
     &_active {
-      background-color: #00431f;
+      background-color: $green;
     }
   }
 }
@@ -86,6 +87,8 @@
 
 @media (max-width: 480px) {
   .projectCard {
+    max-width: none;
+    width: 100%;
 
     &__title {
       font-size: 16px;

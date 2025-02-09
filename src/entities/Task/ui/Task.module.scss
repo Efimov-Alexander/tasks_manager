@@ -1,21 +1,24 @@
+@import 'src/app/ui/colorsVariable';
+
 .task {
-  background: linear-gradient(135deg, #2a2d3e, #1a1c2b);
+  background: $dark-background;
   padding: 14px;
   border-radius: 15px;
   box-shadow: 0 3px 10px rgba(138, 43, 226, 0.5);
-  border-left: 1px solid #8a2be2;
-  transition: border 0.3s ease;
+  border-left: 1px solid $purple-700;
+  transition: 0.3s ease;
   cursor: grab;
   flex: 0 0 33%;
+  max-height: fit-content;
 
   &:hover {
     box-shadow: 0 3px 10px rgba(191, 137, 241, 0.5);
-    border-left: 1px solid #b47fe6;
+    border-left: 1px solid $purple-800;
   }
 
   &__titleContainer {
     font-size: 16px;
-    color: #e5ccff;
+    color: $purple-900;
     display: flex;
     margin-bottom: 12px;
   }
@@ -32,75 +35,33 @@
     overflow: hidden;
     border: 1px solid transparent;
     border-radius: 5px;
-    transition: border 0.3s ease;
+    transition: 0.3s ease;
     outline: none;
 
     &:focus, &:hover {
       background: rgba(192, 132, 252, 0.2);
-      border: 1px solid #e5ccff;
+      border: 1px solid $purple-900;
     }
   }
 
   &__dates {
     font-size: 12px;
-    color: #b0b0b0;
-  }
-
-  &__priority {
-    font-size: 14px;
-    margin: 12px 0;
-    height: 26px;
-    display: inline-flex;
-    padding: 0 10px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    color: #ffffff;
-    cursor: pointer;
-
-    &_urgent {
-      background-color: #006161;
-    }
-    &_hight {
-      background-color: #6a000a;
-    }
-    &_medium {
-      background-color: #8a7b00;
-    }
-    &_low {
-      background-color: #005c2a;
-    }
+    color: $gray-700;
   }
 
   &__descriptionNote {
     font-size: 14px;
   }
 
-  &__description {
-    field-sizing: content;
-    width: 100%;
-    resize: none;
-    border: 2px solid #2c2f48;
-    border-radius: 5px;
-    padding: 6px;
-    font-size: 12px;
-    margin-bottom: 12px;
-    transition: background 0.3s ease;
-
-    &:hover {
-      background: rgba(192, 132, 252, 0.2);
-    }
-  }
-
   &__dropzone {
     font-size: 12px;
-    border: 2px dashed #c084fc;
+    border: 2px dashed $purple-800;
     padding: 10px;
     text-align: center;
     border-radius: 10px;
     cursor: pointer;
     transition: background 0.3s ease;
-    background: #222437;
+    background: $purple-100;
     margin-bottom: 12px;
 
     &:hover {
@@ -111,10 +72,15 @@
   &__loadedFile {
     font-size: 12px;
   }
+
+  &_done {
+    opacity: 0.5;
+  }
 }
 
 @media (max-width: 768px) {
   .task {
+    padding: 8px;
 
     &__titleContainer {
       font-size: 14px;
@@ -143,6 +109,12 @@
     &__loadedFile {
       font-size: 10px;
     }
+  }
+}
+
+:global {
+  .tox-toolbar__primary {
+    justify-content: space-between;
   }
 }
 

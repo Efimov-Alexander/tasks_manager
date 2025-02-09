@@ -1,32 +1,33 @@
-import {TaskStatus} from "src/features/Task";
+import { TaskStatus} from "src/entities/Task";
 
 import s from './TasksColumn.module.scss'
-import {ITask} from "../../../features/Task";
-import {ItemTypes, Task} from "../../../features/Task/ui/Task";
+import {ITask} from "../../../entities/Task";
+import {ItemTypes, Task} from "../../../entities/Task/ui/Task";
 import {useDrop} from "react-dnd";
-import {useDropTask} from "../../../features/Task/model/dragAndDrop";
+import {useChangeTaskValue} from "../../../entities/Task/model/taskHelper";
+import {Button} from "../../../shared/ui/Button";
 
 interface IProps {
   title: TaskStatus,
   tasks?: ITask[],
+  onAddTask: (status: TaskStatus) => void,
 }
 
-export const TasksColumn = ({ title, tasks }:IProps) => {
-  const { dropTask } = useDropTask();
+export const TasksColumn = ({ title, tasks, onAddTask }:IProps) => {
+  const { changeTaskValue } = useChangeTaskValue();
 
   const [_, drop] = useDrop({
     accept: ItemTypes.task,
-    drop: (item: ITask) => dropTask({ item, title }),
+    drop: (item: ITask) => changeTaskValue({ task: item, valueName: "status", value: title }),
   })
 
   return <div ref={drop} className={s.tasksColumn} >
-    <h3 className={s.tasksColumn__title}>{title}</h3>
+    <div className={s.tasksColumn__header}>
+      <h3 className={s.tasksColumn__title}>{title}</h3>
+      { title !== TaskStatus.done ? <Button onClick={() => onAddTask(title)}>Add Task</Button> :  null}
+    </div>
     <div className={s.tasksColumn__tasksContainer}>
-      { tasks ? tasks.map((task) => {
-        const {status, priority, description, title, id, createdAt, files} = task;
-
-        return <Task key={id} files={files} id={id} createdAt={createdAt} priority={priority} title={title} status={status} description={description}/>
-      }) : null }
+      { tasks ? tasks.map(({comments, id, status, title, description, priority, files, createdAt }) => <Task key={id} files={files} id={id} createdAt={createdAt} comments={comments} priority={priority} title={title} status={status} description={description}/>) : null }
     </div>
   </div>
 }

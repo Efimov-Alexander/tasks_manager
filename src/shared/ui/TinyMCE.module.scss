@@ -1,0 +1,57 @@
+@import "src/app/ui/colorsVariable";
+
+.tinyMCE {
+  margin: 6px 0;
+}
+:global {
+  .tox.tox-tinymce {
+    height: fit-content;
+    max-height: 300px;
+  }
+
+  .tox {
+    .tox-toolbar-overlord {
+      background: $purple-100 !important;
+    }
+    .tox-toolbar__primary {
+      background: $purple-100 !important;
+    }
+    .tox-toolbar__group {
+      background: $purple-100 !important;
+    }
+    .tox-edit-area::before {
+      border: none !important;
+    }
+    .tox-tbtn {
+      cursor: pointer;
+      background: $purple-200;
+      border: 1px solid $gray-500 !important;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+  .tox-collection__item--enabled, .tox-collection__item--active {
+    background-color: rgb(26, 28, 43) !important;
+    svg {
+      fill: $gray-900 !important;
+    }
+  }
+  .tox-collection__item-label {
+    p,h3,h4,h5,h6, pre {
+      background-color: rgb(26, 28, 43) !important;
+      border-radius: 5px !important;
+    }
+  }
+  .tox-collection__group, .tox-editor-header, .tox-menu {
+    background-color: $purple-100 !important;
+  }
+  .tox-tinymce {
+    border: 2px solid $gray-500 !important;
+  }
+  .tox-toolbar__overflow {
+    border: 1px solid $gray-500 !important;
+    background-color: $purple-100 !important;
+  }
+}

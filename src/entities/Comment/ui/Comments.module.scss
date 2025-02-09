@@ -1,0 +1,25 @@
+@import 'src/app/ui/colorsVariable';
+
+.taskComments {
+  font-size: 14px;
+  cursor: auto;
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid $gray-500;
+
+  &__addCommentButton {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .taskComments {
+    font-size: 12px;
+
+    &__addCommentButton {
+      height: 24px;
+      font-size: 12px;
+    }
+  }
+}

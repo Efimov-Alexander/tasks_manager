@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://Efimov-Alexander.github.io/tasks_manager",
   "dependencies": {
+    "@tinymce/tinymce-react": "^5.1.1",
     "@types/node": "^16.18.125",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
