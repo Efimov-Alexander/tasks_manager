@@ -1,7 +1,7 @@
 @import 'src/app/ui/colorsVariable';
 
 .searchedTask {
-  height: 30px;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -15,5 +15,11 @@
 
   &:hover {
     background-color: $purple-200;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchedTask {
+    font-size: 14px;
   }
 }

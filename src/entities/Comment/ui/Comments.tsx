@@ -14,12 +14,11 @@ import {ADD_COMMENT_TITLE} from "../model/commentConstants";
 
 interface IProps {
   comments?: ITask['comments'],
-  onReplyComment: () => void,
+  onReplyComment: (comment: IComment) => void,
 }
 
 export const Comments = ({ comments, onReplyComment }: IProps) => {
   const defaultAndNestedComments = collectNestedComments(comments)
-
   const [visibleComments, setVisibleComments] = useState<IComment[]>(comments ? comments : []);
 
   useEffect(() => {
@@ -44,7 +43,7 @@ export const Comments = ({ comments, onReplyComment }: IProps) => {
       const {comments: nestedComments, id} = comment;
       const isOpen = isVisibleNestedComments(nestedComments, visibleComments);
 
-      return <Comment onReplyComment={onReplyComment} key={id} comment={comment} onToggleComment={onToggleComment} isOpen={isOpen}/>
+      return <Comment onReplyComment={() => onReplyComment(comment)} key={id} comment={comment} onToggleComment={onToggleComment} isOpen={isOpen}/>
     })
   };
 

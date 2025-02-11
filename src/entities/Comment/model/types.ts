@@ -8,5 +8,4 @@ export interface IComment {
 
 export interface INestedComment extends IComment {
   nestingLevel: number,
-  visible: boolean,
 }

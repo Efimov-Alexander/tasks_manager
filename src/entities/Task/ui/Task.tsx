@@ -4,7 +4,7 @@ import s from './Task.module.scss'
 import {useDrag} from "react-dnd";
 import {useDropzone} from "react-dropzone";
 import React, {useState} from "react";
-import {useAddComment, useOnDropFiles, useOnTitleChange} from "../model/hooks";
+import {useAddComment, useOnDropFiles, useOnTitleChange, useReplyComment} from "../model/hooks";
 import {PrioritySelect} from "./PrioritySelect";
 import {Button} from "../../../shared/ui/Button";
 import {CommentsModal} from "../../../shared/modals/CommentsModal";
@@ -16,6 +16,7 @@ import { useAddSubTask} from "../../../pages/ProjectTasks/model/hooks";
 import {TTaskOrSubTask} from "../model/types";
 import {DescriptionModal} from "../../../shared/modals/DescriptionModal";
 import {onFindTask} from "../../../pages/ProjectTasks/model/projectTasksHelper";
+import {IComment} from "../../Comment";
 
 type IProps = {
   task: TTaskOrSubTask
@@ -31,6 +32,7 @@ export const Task = ({task}: IProps) => {
   const [_, drag] = useDrag({ type: ItemTypes.task, item: task })
   const { titleChange } = useOnTitleChange();
   const {addComment } = useAddComment();
+  const {replyComment} = useReplyComment();
   const {onDrop } = useOnDropFiles();
   const {addSubtask} = useAddSubTask();
 
@@ -43,7 +45,7 @@ export const Task = ({task}: IProps) => {
   })
 
   const onModalAddComment = (text: string) => addComment({task,text})
-  const onReplyComment = (text: string) => addComment({task,text})
+  const onReplyComment = (comment: IComment, text: string) => replyComment({comment,text, task})
   const onTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => titleChange(e, task);
   const onOpenCommentaries = () => setModal(TaskModals.comments)
   const onAddComment = () => setModal(TaskModals.addComment)
@@ -88,7 +90,7 @@ export const Task = ({task}: IProps) => {
       {'mainTask' in task ? null : <Button onClick={onAddSubtask}>Add subtask</Button>}
     </div>
 
-    {modal && modal !== TaskModals.description ? <CommentsModal modal={modal} comments={comments} setModal={setModal} replyComment={onReplyComment} addComment={onModalAddComment}/> : null}
+    {modal && modal !== TaskModals.description ? <CommentsModal modal={modal} comments={comments} setModal={setModal} addReplyComment={onReplyComment} addComment={onModalAddComment}/> : null}
 
     {modal === TaskModals.description ? <DescriptionModal task={task} setModal={setModal}/> : null }
   </div>;

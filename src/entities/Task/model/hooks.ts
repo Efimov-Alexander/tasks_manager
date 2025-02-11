@@ -2,9 +2,10 @@ import {ISubtask, ITask, TaskStatus, TTaskOrSubTask} from "./types";
 import React, {useContext} from "react";
 import {getStorageId, ProjectsContext, setStorageId} from "../../../app/model/appHelper";
 import {IComment} from "../../Comment";
-import {COMMENT_ID_KEY, TASK_ID_KEY} from "../../../app/constants/localStorage";
+import {COMMENT_ID_KEY} from "../../../app/constants/localStorage";
 import {TITLE_MAX_LENGTH} from "../constants/taskConstants";
 import {getProjectByTask} from "../../../pages/ProjectTasks/model/projectTasksHelper";
+import {addNestedComment} from "../../Comment/model/commentHelper";
 
 export const useChangeTaskValue = () => {
   const { setProjects, projects } = useContext(ProjectsContext);
@@ -65,10 +66,37 @@ export const useAddComment = () => {
     newComments.push(newComment);
 
     'mainTask' in task ? changeSubTaskValue({valueName: 'comments', task, value: newComments}) : changeTaskValue({valueName: 'comments', task, value: newComments})
-    setStorageId(commentId + 1, TASK_ID_KEY);
+    setStorageId(commentId + 1, COMMENT_ID_KEY);
   }
 
   return {addComment}
+}
+
+export const useReplyComment = () => {
+  const {changeTaskValue} = useChangeTaskValue();
+  const {changeSubTaskValue} = useChangeSubTaskValue();
+  const {projects} = useContext(ProjectsContext);
+
+  const replyComment = ({text, task, comment}: {text: string, task: TTaskOrSubTask, comment: IComment}) => {
+    const project = getProjectByTask({projects, task})
+
+    if(!project || !project.tasks || !task.comments) return
+
+    const commentId = getStorageId(COMMENT_ID_KEY);
+    const newComment: IComment = {
+      text,
+      id: commentId,
+      createdAt: new Date(),
+      userName: 'User'
+    }
+
+    addNestedComment(task.comments, comment.id, newComment);
+
+    'mainTask' in task ? changeSubTaskValue({valueName: 'comments', task, value: task.comments}) : changeTaskValue({valueName: 'comments', task, value: task.comments})
+    setStorageId(commentId + 1, COMMENT_ID_KEY);
+  }
+
+  return {replyComment}
 }
 
 export const useOnDropFiles = () => {
