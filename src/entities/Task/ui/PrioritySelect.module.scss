@@ -27,7 +27,8 @@
 
   &__priorities {
     background-color: $purple-100;
-    position: absolute;
+    position: relative;
+    width: fit-content;
     z-index: 50;
     display: flex;
     height: fit-content;
