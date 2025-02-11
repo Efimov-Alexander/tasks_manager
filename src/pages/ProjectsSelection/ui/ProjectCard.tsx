@@ -5,14 +5,9 @@ import {IProject, ProjectStatus} from "src/entities/Project";
 import s from './ProjectCard.module.scss';
 import {Link} from "react-router-dom";
 import cn from "classnames";
+import {IMAGES} from "../../../app/constants/data";
 
-interface IProps {
-  id: IProject['id'],
-  title: IProject['title'],
-  description: IProject['description'],
-  status: IProject['status'],
-  imageSrc: IProject['imageSrc'],
-}
+interface IProps extends Omit<IProject, 'tasks'> {}
 
 const ProjectCard = ({ id, description, status, title, imageSrc }: IProps) => {
   const statusClassnames = cn(s.projectCard__status, {
@@ -27,7 +22,7 @@ const ProjectCard = ({ id, description, status, title, imageSrc }: IProps) => {
   return <li className={projectClassnames}>
     <Link className={s.projectCard__link} to={`projects/${id}`}>
       <div className={s.projectCard__imageContainer}>
-        <img className={s.projectCard__image} src={require('src/assets/images/handball.jpg')} alt={'Project image'}/>
+        <img className={s.projectCard__image} src={IMAGES[imageSrc]} alt={'Project image'}/>
       </div>
       <div className={s.projectCard__infoWrapper}>
         <div className={s.projectCard__title}>{title}</div>

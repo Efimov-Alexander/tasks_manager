@@ -3,7 +3,11 @@ import React, {useEffect, useState} from "react";
 
 import s from './Comments.module.scss'
 import {ITask} from "../../Task/model/types";
-import {collectNestedComments, isVisibleNestedComments, removeNestedComments} from "../model/commentHelper";
+import {
+  collectNestedComments,
+  isVisibleNestedComments,
+  removeNestedComments
+} from "../model/commentHelper";
 import {IComment, INestedComment} from "../model/types";
 import {Comment} from "./Comment";
 import {ADD_COMMENT_TITLE} from "../model/commentConstants";
@@ -15,6 +19,7 @@ interface IProps {
 
 export const Comments = ({ comments, onReplyComment }: IProps) => {
   const defaultAndNestedComments = collectNestedComments(comments)
+
   const [visibleComments, setVisibleComments] = useState<IComment[]>(comments ? comments : []);
 
   useEffect(() => {

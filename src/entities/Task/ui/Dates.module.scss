@@ -1,0 +1,12 @@
+@import 'src/app/ui/colorsVariable';
+
+.dates {
+  font-size: 12px;
+  color: $gray-700;
+}
+
+@media (max-width: 768px) {
+  .dates {
+    font-size: 10px;
+  }
+}

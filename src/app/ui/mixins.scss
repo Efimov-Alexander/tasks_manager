@@ -1,6 +1,6 @@
 @mixin scrollbar {
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
 
   &::-webkit-scrollbar-track {
@@ -17,5 +17,33 @@
     &::-webkit-scrollbar {
       width: 6px;
     }
+  }
+}
+
+@mixin modal {
+  &__darkBackground {
+    z-index: 50;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    cursor: default;
+    background-color: $gray-100;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    width: 60%;
+    //max-height: 90%;
+    position: absolute;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    background: $dark-background;
+    top: 50%;
+    left: 50%;
   }
 }

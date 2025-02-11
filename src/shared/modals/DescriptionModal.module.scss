@@ -1,0 +1,19 @@
+@import "../../app/ui/colorsVariable";
+@import '../../app/ui/mixins';
+
+.descriptionModal {
+  @include modal;
+
+  &__container {
+    background: $dark-background;
+  }
+}
+
+@media (max-width: 768px) {
+  .descriptionModal {
+
+    &__wrapper {
+      width: 100%;
+    }
+  }
+}

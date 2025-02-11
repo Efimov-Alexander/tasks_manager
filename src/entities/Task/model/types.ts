@@ -14,6 +14,13 @@ export enum TaskPriority {
   none = 'None'
 }
 
+export interface ISubtask extends Omit<ITask, 'subTasks'>{
+  mainTask: {
+    id: ITask['id'],
+    title: ITask['title']
+  }
+}
+
 export interface ITask {
   id: number,
   title: string,
@@ -21,6 +28,10 @@ export interface ITask {
   priority: TaskPriority,
   status: TaskStatus,
   createdAt: Date,
+  endedAt?: Date,
+  subTasks?: ISubtask[],
   files?: any[],
   comments?: IComment[],
 }
+
+export type TTaskOrSubTask = ITask | ISubtask

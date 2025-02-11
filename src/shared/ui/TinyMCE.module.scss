@@ -1,12 +1,8 @@
 @import "src/app/ui/colorsVariable";
 
-.tinyMCE {
-  margin: 6px 0;
-}
 :global {
   .tox.tox-tinymce {
-    height: fit-content;
-    max-height: 300px;
+    height: 600px !important;
   }
 
   .tox {
@@ -53,5 +49,11 @@
   .tox-toolbar__overflow {
     border: 1px solid $gray-500 !important;
     background-color: $purple-100 !important;
+  }
+
+  @media (max-width: 768px) {
+    .tox.tox-tinymce {
+      height: 500px !important;
+    }
   }
 }

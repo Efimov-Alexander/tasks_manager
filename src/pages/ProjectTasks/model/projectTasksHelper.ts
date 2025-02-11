@@ -1,49 +1,65 @@
-import {ITask, TaskPriority, TaskStatus} from "../../../entities/Task";
-import {IGetProjectByIdParams} from "./types";
 import {IProject} from "../../../entities/Project";
-import {getStorageId, ProjectsContext, setStorageId} from "../../../app/model/appHelper";
-import {TASK_ID_KEY} from "../../../app/constants/localStorage";
-import {useContext} from "react";
+import {ITask, TaskStatus} from "../../../entities/Task";
+import {TTaskOrSubTask} from "../../../entities/Task/model/types";
+import {SCROLL_OPTIONS} from "./peojectTasksConstants";
+import {IGetProjectByIdParams, IGetProjectByTaskParams} from "./types";
 
 export const getProjectById = ({ projects, id }: IGetProjectByIdParams) => projects.find((project) => project.id === id)
+
+export const getProjectByTask = ({ projects, task }: IGetProjectByTaskParams) => {
+  return projects.find((project) => {
+    if (!project.tasks) return false
+
+    return project.tasks.some((someTask) => {
+      if (someTask.id === task.id) return true
+      if (someTask.subTasks) return someTask.subTasks.some((someTask) => someTask.id === task.id)
+    })
+  })
+};
 
 export const getFilteredTasks = (project: IProject | undefined)=> {
   if (!project || !project.tasks) return
 
+  const tasksAndSubtasks = collectTasksAndSubtasks(project.tasks);
   const filteredTasks = {
     [TaskStatus.queue]: [],
     [TaskStatus.development]: [],
     [TaskStatus.done]: []
   } as { [key in TaskStatus]: ITask[] };
 
-  project.tasks.forEach((task) => filteredTasks[task.status].push(task));
+  tasksAndSubtasks.forEach((task) => filteredTasks[task.status].push(task));
 
   return filteredTasks;
 }
 
-export const useAddTask = () => {
-  const { projects, setProjects } = useContext(ProjectsContext);
+export const getSearchedTasks = (project: IProject | undefined, searchText: string) => {
+  if (!project || !project.tasks) return [];
 
-  const addTask = ({ status, project }: {status: TaskStatus, project: IProject | undefined}) => {
-    if (!project) return;
+  const allTasks = collectTasksAndSubtasks(project.tasks);
 
-    const taskId = getStorageId(TASK_ID_KEY);
-    const newTask: ITask = {
-      id: taskId,
-      createdAt: new Date(),
-      status,
-      description: '',
-      title: '',
-      priority: TaskPriority.none,
-    }
+  return allTasks.filter((task) => task.id === parseInt(searchText.trim()) || task.title.includes(searchText))
+}
 
-    projects.forEach((someProject) => {
-      if (someProject.id === project.id && someProject.tasks) someProject.tasks.unshift(newTask)
-    })
+export const collectTasksAndSubtasks = (tasks: ITask[] | undefined) => {
+  if (!tasks) return []
 
-    setProjects([...projects]);
-    setStorageId(taskId + 1, TASK_ID_KEY);
-  }
+  const result = [] as TTaskOrSubTask[];
 
-  return {addTask}
+  tasks.forEach((task) => {
+    result.push(task)
+
+    if (task.subTasks) task.subTasks.forEach((task) => result.push(task))
+  })
+
+  return result
+}
+
+export const onFindTask = (id: number) => {
+  const task = document.getElementById(`${id}`);
+
+  if (!task) return
+
+  task.scrollIntoView(SCROLL_OPTIONS);
+  task.classList.add('finded-task')
+  setTimeout(() => {task.classList.remove('finded-task')}, 3000);
 }

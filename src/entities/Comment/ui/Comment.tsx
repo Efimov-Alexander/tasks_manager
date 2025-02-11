@@ -27,6 +27,6 @@ export const Comment = ({ comment, isOpen, onToggleComment, onReplyComment }: IP
       </div>
       <Button onClick={onReplyComment} className={s.comment__replyButton}>Reply</Button>
     </div>
-    <div className={s.comment__text}>{text}</div>
+    <div className={s.comment__text} dangerouslySetInnerHTML={{__html: text}} />
   </div>
 }

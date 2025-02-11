@@ -11,7 +11,7 @@ export interface IProject {
   id: number,
   title: string,
   description: string,
-  imageSrc: string
+  imageSrc: number,
   status: ProjectStatus,
   tasks?: ITask[],
 }

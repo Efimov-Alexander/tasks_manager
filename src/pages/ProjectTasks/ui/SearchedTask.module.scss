@@ -1,0 +1,19 @@
+@import 'src/app/ui/colorsVariable';
+
+.searchedTask {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 0 12px;
+  cursor: pointer;
+  background-color: $purple-100;
+  border: 2px solid $gray-500;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $purple-200;
+  }
+}

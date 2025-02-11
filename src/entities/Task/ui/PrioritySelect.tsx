@@ -1,25 +1,39 @@
-import React from "react";
-import cn from "classnames";
+import React, {useState} from "react";
 import s from "./PrioritySelect.module.scss";
-import {TaskPriority} from "../model/types";
+import { TaskPriority, TTaskOrSubTask} from "../model/types";
+import { useChangeSubTaskValue, useChangeTaskValue} from "../model/hooks";
+import {getPriorityClassName} from "../model/taskHelper";
 
 interface IProps {
   selectedValue: TaskPriority,
+  task: TTaskOrSubTask,
 }
 
-export const PrioritySelect = ({ selectedValue }: IProps) => {
+const priorities = Object.values(TaskPriority)
 
-  const priorityClassname = cn(s.prioritySelect, {
-    [s.prioritySelect_urgent]: selectedValue === TaskPriority.urgent,
-    [s.prioritySelect_hight]: selectedValue === TaskPriority.high,
-    [s.prioritySelect_medium]: selectedValue === TaskPriority.medium,
-    [s.prioritySelect_low]: selectedValue === TaskPriority.low,
-    [s.prioritySelect_none]: selectedValue === TaskPriority.none,
-  });
+export const PrioritySelect = ({ selectedValue, task }: IProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const {changeSubTaskValue} = useChangeSubTaskValue();
+  const {changeTaskValue} = useChangeTaskValue();
 
-  const onPriorityChange = () => {
+  const onOpen = (e: React.MouseEvent<HTMLElement>) => setIsOpen(!isOpen)
 
+  const onPriorityChange = (priority: TaskPriority) => {
+    'mainTask' in task ?
+      changeSubTaskValue({valueName: 'priority', task, value: priority})
+      : changeTaskValue({valueName: 'priority', task, value: priority})
+
+    setIsOpen(!isOpen)
   }
 
-  return <div onClick={onPriorityChange} className={priorityClassname}>{selectedValue}</div>
+  return <div className={s.prioritySelect__wrapper}>
+    <div onClick={onOpen} className={getPriorityClassName(selectedValue)}>{selectedValue}</div>
+
+    { isOpen ? <>
+      <div className={s.prioritySelect__priorities}>
+        {priorities.map((priority) => <div key={priority} className={getPriorityClassName(priority)} onClick={() => onPriorityChange(priority)}>{priority}</div>)}
+      </div>
+      <div className={s.prioritySelect__outer} onClick={() => setIsOpen(false)} />
+    </> : null}
+  </div>
 }
