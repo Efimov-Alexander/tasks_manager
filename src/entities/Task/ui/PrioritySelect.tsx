@@ -27,14 +27,15 @@ export const PrioritySelect = ({ selectedValue, task }: IProps) => {
     setIsOpen(!isOpen)
   }
 
-  return <div className={s.prioritySelect__wrapper}>
-    <div onClick={onOpen} className={getPriorityClassName(selectedValue)}>{selectedValue}</div>
+  return <>
+    {isOpen ? <div className={s.prioritySelect__outer} onClick={() => setIsOpen(false)}/> : null}
+    <div className={s.prioritySelect__wrapper}>
 
-    { isOpen ? <>
-      <div className={s.prioritySelect__priorities}>
+      <div onClick={onOpen} className={getPriorityClassName(selectedValue)}>{selectedValue}</div>
+
+      {isOpen ? <div className={s.prioritySelect__priorities}>
         {priorities.map((priority) => <div key={priority} className={getPriorityClassName(priority)} onClick={() => onPriorityChange(priority)}>{priority}</div>)}
-      </div>
-      <div className={s.prioritySelect__outer} onClick={() => setIsOpen(false)} />
-    </> : null}
-  </div>
+      </div> : null}
+    </div>
+  </>
 }
