@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/tasks_manager/static/css/main.c8f34719.css",
-    "main.js": "/tasks_manager/static/js/main.746108da.js",
+    "main.css": "/tasks_manager/static/css/main.4e3b7c34.css",
+    "main.js": "/tasks_manager/static/js/main.4db880d1.js",
     "static/media/handball.jpg": "/tasks_manager/static/media/handball.3f34446364ba1bc21a86.jpg",
+    "static/media/football.webp": "/tasks_manager/static/media/football.3d6aabed73bae7c5b21f.webp",
     "index.html": "/tasks_manager/index.html",
-    "main.c8f34719.css.map": "/tasks_manager/static/css/main.c8f34719.css.map",
-    "main.746108da.js.map": "/tasks_manager/static/js/main.746108da.js.map"
+    "main.4e3b7c34.css.map": "/tasks_manager/static/css/main.4e3b7c34.css.map",
+    "main.4db880d1.js.map": "/tasks_manager/static/js/main.4db880d1.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8f34719.css",
-    "static/js/main.746108da.js"
+    "static/css/main.4e3b7c34.css",
+    "static/js/main.4db880d1.js"
   ]
 }
