@@ -7,7 +7,7 @@ import {TaskDescription} from "src/features/TaskDescription";
 import {TaskDropzone} from "src/features/TaskDropzone";
 import {TaskSubtasks} from "src/features/TaskSubtasks";
 import {TaskComments} from "src/features/TaskComments";
-import {Title, ITask, TaskStatus, Dates} from "src/entities/Task";
+import {Title, ITask, Dates} from "src/entities/Task";
 
 import s from './Task.module.scss'
 
@@ -23,12 +23,8 @@ export const Task = ({task}: IProps) => {
   const [_, drag] = useDrag({ type: ItemTypes.task, item: task })
   const { priority, id, createdAt, endedAt} = task;
 
-  const taskClassName = cn(s.task, {
-    [s.task_done]: task.status === TaskStatus.done,
-  })
-
-  return <div id={`${id}`} ref={drag} className={taskClassName}>
-    <Title task={task} />
+  return <div id={`${id}`} ref={drag} className={s.task}>
+    <Title task={task} className={s.task__title} />
 
     <div className={s.task__characteristicBLock}>
       <Dates createdAt={createdAt} endedAt={endedAt}/>
@@ -36,8 +32,8 @@ export const Task = ({task}: IProps) => {
     </div>
 
     <TaskSubtasks task={task} className={s.task__subtasks} />
-    <TaskDescription task={task}/>
-    <TaskDropzone task={task}/>
+    <TaskDescription task={task} className={s.task__description}/>
+    <TaskDropzone task={task} className={s.task__dropzone}/>
     <TaskComments task={task}/>
   </div>;
 };

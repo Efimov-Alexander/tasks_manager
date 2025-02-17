@@ -20,7 +20,7 @@ export const DescriptionModal = ({setModal, task}: IProps) => {
     if (editorRef.current) {
       const newDescription = editorRef.current.getContent();
 
-      'mainTask' in task ?
+      task.mainTask ?
         changeSubTaskValue({valueName: 'description', task, value: newDescription})
         : changeTaskValue({valueName: 'description', task, value: newDescription})
     }

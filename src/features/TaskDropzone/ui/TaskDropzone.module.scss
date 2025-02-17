@@ -10,16 +10,14 @@
     cursor: pointer;
     transition: background 0.3s ease;
     background: $purple-100;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 
     &:hover {
       background: rgba(192, 132, 252, 0.2);
     }
   }
 
-  &__files {
-    margin-bottom: 10px;
-  }
+  &__files {}
 
   &__loadedFile {
     font-size: 14px;

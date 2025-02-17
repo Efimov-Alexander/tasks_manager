@@ -17,6 +17,18 @@
     border-left: 1px solid $purple-800;
   }
 
+  &__title {
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    margin-bottom: 12px;
+  }
+
+  &__dropzone {
+    margin-bottom: 12px;
+  }
+
   &__characteristicBLock {
     display: flex;
     justify-content: space-between;
@@ -25,10 +37,6 @@
 
   &__subtasks {
     margin-bottom: 10px;
-  }
-
-  &_done {
-    opacity: 0.5;
   }
 }
 

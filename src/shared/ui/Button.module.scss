@@ -12,6 +12,7 @@
   color: $white;
   cursor: pointer;
   border-radius: 8px;
+  width: fit-content;
   transition: background 0.3s ease;
 
   &__disabled {

@@ -28,7 +28,7 @@ export const useAddComment = () => {
     const newComments = task.comments ? [...task.comments] : [];
     newComments.push(newComment);
 
-    'mainTask' in task ?
+    task.mainTask ?
       changeSubTaskValue({valueName: 'comments', task, value: newComments})
       : changeTaskValue({valueName: 'comments', task, value: newComments})
 
@@ -59,7 +59,7 @@ export const useReplyComment = () => {
 
     addNestedComment(task.comments, comment.id, newComment);
 
-    'mainTask' in task ?
+    task.mainTask ?
       changeSubTaskValue({valueName: 'comments', task, value: task.comments})
       : changeTaskValue({valueName: 'comments', task, value: task.comments})
 

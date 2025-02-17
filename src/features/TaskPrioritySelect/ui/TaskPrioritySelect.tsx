@@ -21,7 +21,7 @@ export const TaskPrioritySelect = ({ selectedValue, task }: IProps) => {
   const onOpen = (e: React.MouseEvent<HTMLElement>) => setIsOpen(!isOpen)
 
   const onPriorityChange = (priority: TaskPriority) => {
-    'mainTask' in task ?
+    task.mainTask ?
       changeSubTaskValue({valueName: 'priority', task, value: priority})
       : changeTaskValue({valueName: 'priority', task, value: priority})
 
