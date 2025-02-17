@@ -1,8 +1,11 @@
-import s from "./Dates.module.scss";
 import React from "react";
-import {ITask} from "../model/types";
 import {formatDistance} from "date-fns";
-import {monthYearTimeFormat} from "../model/taskHelper";
+
+import {monthYearTimeFormat} from "../lib/helpers";
+
+import type {ITask} from "../model/types";
+
+import s from "./Dates.module.scss";
 
 interface IProps {
   createdAt: ITask['createdAt'],
@@ -14,9 +17,9 @@ export const Dates = ({createdAt, endedAt}: IProps) => {
   const formattedEndedAt =  monthYearTimeFormat(endedAt);
   const formattedTimeAtWork = formatDistance(createdAt, new Date());
 
-  return <>
+  return <div>
     <div className={s.dates}>This task created: {formattedCreatedAt}</div>
     <div className={s.dates}>Time at work: {formattedTimeAtWork}</div>
     {formattedEndedAt ? <div className={s.dates}>Done at {formattedEndedAt}</div> : null}
-  </>
+  </div>
 }

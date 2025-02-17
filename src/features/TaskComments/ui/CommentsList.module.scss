@@ -1,0 +1,15 @@
+@import 'src/shared/styles/colorsVariable';
+
+.commentsList {
+  font-size: 14px;
+  cursor: auto;
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid $gray-500;
+}
+
+@media (max-width: 768px) {
+  .commentsList {
+    font-size: 12px;
+  }
+}

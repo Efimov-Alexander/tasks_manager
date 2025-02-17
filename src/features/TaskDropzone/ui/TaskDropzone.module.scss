@@ -1,0 +1,27 @@
+@import 'src/shared/styles/colorsVariable';
+
+.taskDropzone {
+  &__dropzone {
+    font-size: 12px;
+    border: 2px dashed $purple-800;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    background: $purple-100;
+    margin-bottom: 12px;
+
+    &:hover {
+      background: rgba(192, 132, 252, 0.2);
+    }
+  }
+
+  &__files {
+    margin-bottom: 10px;
+  }
+
+  &__loadedFile {
+    font-size: 14px;
+  }
+}

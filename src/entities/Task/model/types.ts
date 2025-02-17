@@ -1,4 +1,4 @@
-import {IComment} from "../../Comment/model/types";
+import type {IComment} from "src/entities/Comment";
 
 export enum TaskStatus {
   queue = 'Queue',
@@ -14,13 +14,6 @@ export enum TaskPriority {
   none = 'None'
 }
 
-export interface ISubtask extends Omit<ITask, 'subTasks'>{
-  mainTask: {
-    id: ITask['id'],
-    title: ITask['title']
-  }
-}
-
 export interface ITask {
   id: number,
   title: string,
@@ -28,10 +21,13 @@ export interface ITask {
   priority: TaskPriority,
   status: TaskStatus,
   createdAt: Date,
+
   endedAt?: Date,
-  subTasks?: ISubtask[],
+  subTasks?: ITask[],
   files?: any[],
   comments?: IComment[],
+  mainTask?: {
+    id: ITask['id'],
+    title: ITask['title']
+  }
 }
-
-export type TTaskOrSubTask = ITask | ISubtask

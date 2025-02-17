@@ -1,0 +1,76 @@
+@import 'src/shared/styles/colorsVariable';
+@import 'src/shared/styles/mixins';
+
+.task {
+  background: $dark-background;
+  padding: 14px;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(138, 43, 226, 0.5);
+  border-left: 1px solid $purple-700;
+  transition: 0.3s ease;
+  cursor: grab;
+  flex: 0 0 33%;
+  max-height: fit-content;
+
+  &:hover {
+    box-shadow: 0 3px 10px rgba(191, 137, 241, 0.5);
+    border-left: 1px solid $purple-800;
+  }
+
+  &__characteristicBLock {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__subtasks {
+    margin-bottom: 10px;
+  }
+
+  &_done {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .task {
+    padding: 8px;
+
+    &__dates {
+      font-size: 10px;
+    }
+
+    &__priority {
+      font-size: 12px;
+    }
+
+    &__descriptionNote {
+      font-size: 12px;
+    }
+
+    &__description {
+      font-size: 10px;
+      max-height: 200px;
+    }
+
+    &__dropzone {
+      font-size: 10px;
+    }
+
+    &__loadedFile {
+      font-size: 10px;
+    }
+  }
+}
+
+:global {
+  .tox-toolbar__primary {
+    justify-content: space-between;
+  }
+
+  .finded-task {
+    box-shadow: 0 0 20px $blue;
+    opacity: 1;
+  }
+}
+

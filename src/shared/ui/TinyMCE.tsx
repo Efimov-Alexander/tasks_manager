@@ -1,12 +1,13 @@
 import {Editor} from "@tinymce/tinymce-react";
-import {TINY_MCE_API_KEY} from "../../app/constants/apiKeys";
 import React from "react";
 
+import {TINY_MCE_API_KEY} from "../constants/apiKeys";
+import {TINY_CONTENT_STYLE} from "../constants/constants";
+
 import s from './TinyMCE.module.scss'
-import {TINY_CONTENT_STYLE} from "../constants/tinyConstants";
 
 interface IProps {
-  editorRef: React.MutableRefObject<Editor['editor'] | null | undefined>
+  editorRef: React.MutableRefObject<Editor['editor'] | null>
   initValue?: string
 }
 

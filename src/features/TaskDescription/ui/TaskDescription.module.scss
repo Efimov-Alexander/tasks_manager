@@ -1,0 +1,30 @@
+@import 'src/shared/styles/mixins';
+@import 'src/shared/styles/colorsVariable';
+
+.taskDescription {
+  &__note {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    min-height: 30px;
+    margin-top: 6px;
+    padding: 4px;
+    font-size: 13px;
+    max-height: 300px;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    outline: none;
+    cursor: pointer;
+    @include scrollbar;
+
+    &:focus, &:hover {
+      background: rgba(192, 132, 252, 0.2);
+      border: 1px solid $purple-900;
+    }
+  }
+}

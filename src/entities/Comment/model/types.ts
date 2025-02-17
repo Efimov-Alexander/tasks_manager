@@ -4,8 +4,5 @@ export interface IComment {
   text: string,
   createdAt: Date,
   comments?: IComment[],
-}
-
-export interface INestedComment extends IComment {
-  nestingLevel: number,
+  nestingLevel?: number,
 }

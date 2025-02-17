@@ -1,0 +1,29 @@
+@import 'src/shared/styles/colorsVariable';
+
+.taskSubtasks {
+  &__subtasks {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  &__subtasksItem {
+    height: fit-content;
+    display: flex;
+    width: fit-content;
+    max-width: 100%;
+    align-items: center;
+    justify-content: start;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 0 12px;
+    cursor: pointer;
+    background-color: $purple-100;
+    border: 1px solid $gray-500;
+    transition: 0.3s;
+    margin-top: 4px;
+
+    &:hover {
+      background-color: $purple-200;
+    }
+  }
+}

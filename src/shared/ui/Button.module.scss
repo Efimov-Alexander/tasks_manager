@@ -1,4 +1,4 @@
-@import 'src/app/ui/colorsVariable';
+@import 'src/shared/styles/colorsVariable';
 
 .button {
   font-size: 13px;
@@ -13,6 +13,12 @@
   cursor: pointer;
   border-radius: 8px;
   transition: background 0.3s ease;
+
+  &__disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+  }
 
   &:hover {
     background: $purple-300;

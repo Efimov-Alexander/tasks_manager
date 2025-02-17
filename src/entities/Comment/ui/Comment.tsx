@@ -1,11 +1,14 @@
-import s from "./Comment.module.scss";
-import {Button} from "../../../shared/ui/Button";
 import React from "react";
-import {IComment, INestedComment} from "../model/types";
 import {formatDistance} from "date-fns";
 
+import {Button} from "src/shared";
+
+import type {IComment} from "../model/types";
+
+import s from "./Comment.module.scss";
+
 interface IProps {
-  comment: INestedComment,
+  comment: IComment,
   isOpen: boolean,
 
   onToggleComment: (isOpen: boolean, comment: IComment) => void,
@@ -16,7 +19,7 @@ export const Comment = ({ comment, isOpen, onToggleComment, onReplyComment }: IP
   const {id, createdAt, text, userName, nestingLevel, comments} = comment;
 
   const formattedCreatedAt = formatDistance(createdAt, new Date());
-  const style = {marginLeft: `${nestingLevel * 20}px`};
+  const style = nestingLevel ? {marginLeft: `${nestingLevel * 20}px`} : {};
   const openIcon = isOpen ? '-' : '+';
 
   return <div key={id} style={style} className={s.comment}>

@@ -1,23 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-
-import './App.scss';
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
-import { IProject} from "../../entities/Project";
-import {
-  getStorageProjects, initData,
-  ProjectsContext,
-  setStorageProjects,
-} from "../model/appHelper";
-import {routesConfig} from "../model/routesConfig";
+
+import { setStorageValue} from "src/shared";
+import {PROJECTS_KEY, ProjectsContext} from "src/entities/Project";
+
+import {getStorageProjects, initData} from "../lib/helpers";
+import {routesConfig} from "../config/routesConfig";
+
+import type {IProject} from "src/entities/Project";
+
+import './App.scss';
 
 initData();
 
 function App() {
-  const [projects, setProjects] = useState<IProject[]>(getStorageProjects());
+  const [projects, setProjects] = useState<IProject[] | null>(getStorageProjects());
 
-  useEffect(() => {setStorageProjects(projects)}, [projects])
+  useEffect(() => {setStorageValue({value: projects, key: PROJECTS_KEY})}, [projects])
 
   return (
     <ProjectsContext.Provider value={{ setProjects, projects }}>

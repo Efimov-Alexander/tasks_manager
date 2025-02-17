@@ -1,4 +1,5 @@
-import {ITask} from "src/entities/Task";
+import type {ITask} from "src/entities/Task";
+import type {Dispatch, SetStateAction} from "react";
 
 export enum ProjectStatus {
   active = 'Active',
@@ -14,4 +15,10 @@ export interface IProject {
   imageSrc: number,
   status: ProjectStatus,
   tasks?: ITask[],
+}
+
+export interface IProjectsContext {
+  projects: IProject[] | null,
+
+  setProjects: Dispatch<SetStateAction<IProject[] | null>>,
 }

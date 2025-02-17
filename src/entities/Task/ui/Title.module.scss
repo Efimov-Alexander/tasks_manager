@@ -1,0 +1,39 @@
+@import "src/shared/styles/colorsVariable";
+
+.title {
+  &__container {
+    font-size: 16px;
+    color: $purple-900;
+    display: flex;
+    margin-bottom: 12px;
+  }
+
+  &__number {
+    margin-right: 6px;
+    min-width: fit-content;
+  }
+
+  &__textarea {
+    field-sizing: content;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    outline: none;
+
+    &:focus, &:hover {
+      background: rgba(192, 132, 252, 0.2);
+      border: 1px solid $purple-900;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    &__container {
+      font-size: 14px;
+    }
+  }
+}

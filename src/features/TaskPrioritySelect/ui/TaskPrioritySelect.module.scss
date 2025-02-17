@@ -1,0 +1,87 @@
+@import 'src/shared/styles/colorsVariable';
+
+.taskPrioritySelect {
+  font-size: 14px;
+  height: 26px;
+  display: inline-flex;
+  padding: 0 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: $white;
+  cursor: pointer;
+  border: 1px solid $gray-500;
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__outer {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 30;
+  }
+
+  &__priorities {
+    background-color: $purple-100;
+    position: absolute;
+    right: 0;
+    width: fit-content;
+    z-index: 50;
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 6px;
+    padding: 6px;
+    border: 2px solid $gray-500;
+  }
+
+  &_urgent {
+    background-color: $turquoise;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $turquoise-hover;
+    }
+  }
+
+  &_hight {
+    background-color: $red;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+  }
+
+  &_medium {
+    background-color: $yellow;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $yellow-hover;
+    }
+  }
+
+  &_low {
+    background-color: $green;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $green-hover;
+    }
+  }
+
+  &_none {
+    background-color: $gray-500;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $gray-700;
+    }
+  }
+}

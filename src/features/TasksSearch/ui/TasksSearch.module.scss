@@ -1,0 +1,88 @@
+@import 'src/shared/styles/colorsVariable';
+@import 'src/shared/styles/mixins';
+
+.tasksSearch {
+  &__searchWrapper {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5%;
+    font-size: 24px;
+    gap: 16px;
+    padding: 10px;
+  }
+
+  &__inputWrapper {
+    width: 100%;
+    position: relative;
+  }
+
+  &__searchInput {
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    outline: none;
+    border: 3px solid $purple-300;
+    height: 30px;
+
+    &:focus, &:hover {
+      background: rgba(192, 132, 252, 0.2);
+      border: 3px solid $purple-900;
+    }
+  }
+
+  &__searchResult {
+    width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    height: fit-content;
+    background: $purple-100;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 6px;
+    max-height: 300px;
+    overflow: auto;
+    z-index: 10;
+    @include scrollbar;
+
+    &_hidden {
+      opacity: 0;
+      cursor: default;
+    }
+  }
+
+  &__searchedTask {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 0 12px;
+    cursor: pointer;
+    background-color: $purple-100;
+    border: 2px solid $gray-500;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $purple-200;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .tasksSearch {
+    &__searchWrapper {
+      font-size: 18px;
+    }
+
+    &__searchedTask {
+      font-size: 14px;
+    }
+  }
+}
