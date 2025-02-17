@@ -15,6 +15,7 @@ export const ProjectCard = ({project}: IProps) => {
   const { id, description, status, title, imageSrc } = project;
 
   const statusClassnames = cn(s.projectCard__status, {
+    [s.projectCard__status_pending]: status === ProjectStatus.pending,
     [s.projectCard__status_active]: status === ProjectStatus.active,
     [s.projectCard__status_closed]: status === ProjectStatus.closed,
   });

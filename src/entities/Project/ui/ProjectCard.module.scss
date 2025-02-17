@@ -70,6 +70,10 @@
       background-color: $purple-100;
     }
 
+    &_pending {
+      background-color: $yellow;
+    }
+
     &_active {
       background-color: $green;
     }
