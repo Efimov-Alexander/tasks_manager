@@ -1,5 +1,4 @@
 import React, {ChangeEvent, useState} from "react";
-import cn from "classnames";
 
 import {onFindTask, ITask} from "src/entities/Task";
 
