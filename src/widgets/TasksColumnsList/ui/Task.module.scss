@@ -23,6 +23,9 @@
 
   &__description {
     margin-bottom: 12px;
+    overflow: auto;
+
+    @include scrollbar;
   }
 
   &__dropzone {
